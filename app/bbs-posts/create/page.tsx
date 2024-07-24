@@ -28,19 +28,19 @@ const CreateBBSPage = () => {
 
     const router = useRouter();
 
-     const form = useForm({
+    const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
             username: '',
             title: '',
             content: '',
         },
-     });
+    });
 
-     async function onSubmit(value: z.infer<typeof formSchema>) {
+    async function onSubmit(value: z.infer<typeof formSchema>) {
         const {username, title, content} = value;
         postBBS({username, title, content});
-     }
+    }
 
   return (
       <Form {...form}>

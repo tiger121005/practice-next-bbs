@@ -3,5 +3,5 @@
     username: string;
     title: string;
     content: string;
-    createdAt: Date;
+    createAt: Date;
  }
