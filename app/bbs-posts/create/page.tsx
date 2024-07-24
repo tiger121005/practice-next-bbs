@@ -6,8 +6,8 @@ import { Textarea } from '@/components/ui/textarea'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { Input } from '@/components/ui/input'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
 // import { useRouter } from 'next/navigation';
 import { NextPage } from 'next';
 import { postBBS } from '@/app/actions/postBBSAction';

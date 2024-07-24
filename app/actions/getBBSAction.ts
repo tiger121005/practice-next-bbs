@@ -1,6 +1,6 @@
 "use server"
 
-import { z } from "zod"
+import { z } from 'zod'
 import { searchFormSchema } from "./formSchema";
 import prisma from "@/lib/prismaClient";
 import { revalidatePath } from "next/cache";
