@@ -8,7 +8,8 @@ import { useForm } from 'react-hook-form'
 import { Input } from '@/components/ui/input'
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
+import { NextPage } from 'next';
 import { postBBS } from '@/app/actions/postBBSAction';
 
 export const formSchema = z.object({
@@ -24,9 +25,9 @@ export const formSchema = z.object({
         .max(140, { message: '本文は140字以内で入力してください。' }),
 })
 
-const CreateBBSPage = () => {
+const CreateBBSPage: NextPage = () => {
 
-    const router = useRouter();
+    // const router = useRouter();
 
     const form = useForm({
         resolver: zodResolver(formSchema),
