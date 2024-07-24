@@ -1,7 +1,7 @@
 "use server"
 
 import { z } from "zod"
-import { formSchema } from "../page";
+import { searchFormSchema } from "./formSchema";
 import prisma from "@/lib/prismaClient";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -14,7 +14,7 @@ export const getAllBBS = async () => {
 
 export const searchBBS = async ({
     keyword
-}: z.infer<typeof formSchema>) => {
+}: z.infer<typeof searchFormSchema>) => {
     if (keyword.length == 0) {
         const data: BBSData[] = await prisma.post.findMany();
         return data;

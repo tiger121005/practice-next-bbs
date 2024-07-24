@@ -11,26 +11,27 @@ import { zodResolver } from '@hookform/resolvers/zod';
 // import { useRouter } from 'next/navigation';
 import { NextPage } from 'next';
 import { postBBS } from '@/app/actions/postBBSAction';
+import { createFormSchema } from '@/app/actions/formSchema';
 
-export const formSchema = z.object({
-    username: z
-        .string()
-        .min(2, { message: "ユーザー名は２文字以上で入力してください。" }),
-    title: z
-        .string()
-        .min(2, { message: "タイトルは２文字以上で入力してください。" }),
-    content: z
-        .string()
-        .min(10, { message: "本文は10文字以上で入力してください。" })
-        .max(140, { message: '本文は140字以内で入力してください。' }),
-})
+// export const formSchema = z.object({
+//     username: z
+//         .string()
+//         .min(2, { message: "ユーザー名は２文字以上で入力してください。" }),
+//     title: z
+//         .string()
+//         .min(2, { message: "タイトルは２文字以上で入力してください。" }),
+//     content: z
+//         .string()
+//         .min(10, { message: "本文は10文字以上で入力してください。" })
+//         .max(140, { message: '本文は140字以内で入力してください。' }),
+// })
 
 const CreateBBSPage: NextPage = () => {
 
     // const router = useRouter();
 
     const form = useForm({
-        resolver: zodResolver(formSchema),
+        resolver: zodResolver(createFormSchema),
         defaultValues: {
             username: '',
             title: '',
@@ -38,7 +39,7 @@ const CreateBBSPage: NextPage = () => {
         },
     });
 
-    async function onSubmit(value: z.infer<typeof formSchema>) {
+    async function onSubmit(value: z.infer<typeof createFormSchema>) {
         const {username, title, content} = value;
         postBBS({username, title, content});
     }

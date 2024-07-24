@@ -9,7 +9,7 @@ interface BBSDataProps {
 
 const BBSCard = ({ bbsData }: BBSDataProps) => {
 
-    const { id, title, content, createdAt, username } = bbsData
+    const { id, title, content, username } = bbsData
 
   return (
       <Card>

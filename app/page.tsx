@@ -10,11 +10,7 @@ import { z } from "zod";
 import { getAllBBS, searchBBS } from './actions/getBBSAction';
 import { Button } from '@/components/ui/button';
 import { useState, useEffect } from 'react';
-
-export const formSchema = z.object({
-  keyword: z
-    .string()
-})
+import { searchFormSchema } from './actions/formSchema';
 
 export default function Home() {
 
@@ -31,13 +27,13 @@ export default function Home() {
   // const bbsAllData: BBSData[] = await getBBSAllData();
 
   const form = useForm({
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(searchFormSchema),
     defaultValues: {
       keyword: ''
     },
   });
 
-  async function onSearch(value: z.infer<typeof formSchema>) {
+  async function onSearch(value: z.infer<typeof searchFormSchema>) {
     const { keyword } = value;
     bbsData = await searchBBS({ keyword });
     setBBSAllData(bbsData)
